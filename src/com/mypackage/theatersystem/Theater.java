@@ -34,7 +34,7 @@ public class Theater {
 			Row row = null;
 			Person person = null;
 			inputScanner.nextLine();
-			// Read Sections from Input
+			// Read Theater layout from Input
 			while (inputScanner.hasNextLine()) {
 				tempLine = inputScanner.nextLine();
 				if (tempLine.equals("")) {
@@ -58,7 +58,7 @@ public class Theater {
 
 			}
 
-			// Read Request from Input
+			// Read User Requests from Input
 			while (inputScanner.hasNextLine()) {
 				tempLine = inputScanner.nextLine();
 				if (tempLine.equals("")) {
@@ -83,7 +83,11 @@ public class Theater {
 		}
 
 	}
-
+	
+	/*
+	 Initial Set of validations
+	 Verify request count against theater Seat count and Section count
+	*/  
 	private static void validatePerson(Person person) {
 		if (person.getRequestCount() > totalTheaterSeatCount) {
 			person.setUserMessage("Sorry, we can't handle your party");
@@ -150,7 +154,7 @@ public class Theater {
 		
 	}
 
-	// Finds Maximum RowID to process the request
+	// Finds Maximum RowID to allocate to the the request
 	private static Integer findMaxRowForAllocation(int remainedRequestCount, int requestCount) {
 		int consolidatedRowCount = 0;
 		boolean isRequestBucketExists = false;
@@ -169,7 +173,7 @@ public class Theater {
 		
 	}
 	
-	// Finds Maximum RowID to process the request
+	// Prints request output in Console
 		private static void printOutput() {
 			personRequestMap.forEach((key, value) -> {
 				System.out.println(value);
